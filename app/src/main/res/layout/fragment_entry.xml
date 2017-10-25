@@ -10,14 +10,14 @@
     <!-- TODO: Update blank fragment layout -->
     <EditText
         android:layout_width="match_parent"
-        android:layout_height="150px"
+        android:layout_height="80dp"
         android:id="@+id/edtTitle"
         android:inputType="textCapSentences"
         android:hint="@string/strTitle"/>
 
     <EditText
         android:layout_width="match_parent"
-        android:layout_height="400px"
+        android:layout_height="200dp"
         android:id="@+id/edtDescription"
         android:hint="@string/strDescription"
         android:inputType="textMultiLine|textCapSentences"/>
