@@ -1,0 +1,32 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/layout_background"
+    android:padding="15dp"
+    tools:context="com.example.welcome.smartnotepad.Fragment.EntryFragment">
+
+    <!-- TODO: Update blank fragment layout -->
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="150px"
+        android:id="@+id/edtTitle"
+        android:inputType="textCapSentences"
+        android:hint="@string/strTitle"/>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="400px"
+        android:id="@+id/edtDescription"
+        android:hint="@string/strDescription"
+        android:inputType="textMultiLine|textCapSentences"/>
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end"
+        android:background="@drawable/button_border"
+        android:id="@+id/btnSave"
+        android:text="@string/btnSave"/>
+
+</LinearLayout>

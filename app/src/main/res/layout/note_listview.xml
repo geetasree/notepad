@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="3dp">
+    <TextView xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/tv_note_title"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:text="Header"
+        android:textColor="#000000"
+        android:paddingBottom="2dp"
+        android:textSize="26dp" />
+    <TextView xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/tv_note_id"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:text="Id555555555555"
+        android:textColor="#000000"
+        android:visibility="invisible"
+        android:layout_toRightOf="@+id/tv_note_title"
+        android:paddingBottom="2dp"
+        android:textSize="26dp" />
+    <TextView xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/tv_note_description"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:text="Description"
+        android:textColor="#000000"
+        android:textSize="15dp"
+        android:layout_below="@+id/tv_note_ts"/>
+    <TextView xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/tv_note_ts"
+        android:layout_width="wrap_content"
+        android:layout_height="20dp"
+        android:text="TS"
+        android:textColor="#000000"
+        android:textSize="15dp"
+        android:layout_below="@+id/tv_note_title"
+        android:layout_alignParentRight="true"
+         />
+
+</RelativeLayout>

@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">Smart Notepad</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="btnAddNote">+</string>
+    <string name="strTitle">Enter Title</string>
+    <string name="strDescription">Enter Description</string>
+    <string name="btnSave">Save</string>
+    <string name="mnDlt">Delete</string>
+</resources>
