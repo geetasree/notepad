@@ -8,4 +8,5 @@
     <string name="strDescription">Enter Description</string>
     <string name="btnSave">Save</string>
     <string name="mnDlt">Delete</string>
+    <string name="btnCancel">Cancel</string>
 </resources>

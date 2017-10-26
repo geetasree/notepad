@@ -23,6 +23,7 @@ import com.example.welcome.smartnotepad.Adapter.ListNoteAdapter;
 import com.example.welcome.smartnotepad.DBManager.NotepadManager;
 import com.example.welcome.smartnotepad.DBModel.NotepadModel;
 import com.example.welcome.smartnotepad.R;
+import com.example.welcome.smartnotepad.StartActivity;
 
 import java.util.ArrayList;
 
@@ -34,7 +35,7 @@ import java.util.ArrayList;
  * Use the {@link ListFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class ListFragment extends Fragment {
+public class ListFragment extends Fragment implements FragmentManager.OnBackStackChangedListener {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -81,6 +82,8 @@ public class ListFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+       // getActivity().getFragmentManager().addOnBackStackChangedListener(this);
+        ((StartActivity)getActivity()).hideUpButton();
         if (getArguments() != null) {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
@@ -182,6 +185,13 @@ public class ListFragment extends Fragment {
     public void onButtonPressed(Uri uri) {
         if (mListener != null) {
             mListener.onFragmentInteraction(uri);
+        }
+    }
+
+    @Override
+    public void onBackStackChanged() {
+        if(getActivity().getFragmentManager().getBackStackEntryCount() < 1) {
+            ((StartActivity)getActivity()).hideUpButton();
         }
     }
 

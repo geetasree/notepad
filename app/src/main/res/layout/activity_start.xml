@@ -30,7 +30,8 @@
             android:layout_height="wrap_content"
             android:text="@string/btnAddNote"
             android:background="@drawable/button_border"
-            android:onClick="createNote"/>
+            android:onClick="createNote"
+            android:id="@+id/btnAdd"/>
     </LinearLayout>
 
 

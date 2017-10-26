@@ -17,6 +17,7 @@ import android.widget.Toast;
 import com.example.welcome.smartnotepad.DBManager.NotepadManager;
 import com.example.welcome.smartnotepad.DBModel.NotepadModel;
 import com.example.welcome.smartnotepad.R;
+import com.example.welcome.smartnotepad.StartActivity;
 
 import java.text.DateFormat;
 import java.util.Date;
@@ -37,6 +38,7 @@ public class EntryFragment extends Fragment implements View.OnClickListener {
     EditText edtTitle;
     EditText edtDescription;
     Button btnSaveData;
+    Button btnCancelData;
     NotepadModel objNotepadModel;
     NotepadManager objNotepadmanager;
     // TODO: Rename and change types of parameters
@@ -75,6 +77,7 @@ public class EntryFragment extends Fragment implements View.OnClickListener {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        ((StartActivity)getActivity()).showUpButton();
         if (getArguments() != null) {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
@@ -90,6 +93,7 @@ public class EntryFragment extends Fragment implements View.OnClickListener {
         edtTitle = (EditText) RootView.findViewById(R.id.edtTitle);
         edtDescription = (EditText) RootView.findViewById(R.id.edtDescription);
         btnSaveData = (Button) RootView.findViewById(R.id.btnSave);
+        btnCancelData = (Button) RootView.findViewById(R.id.btnCancel);
         if(noteId!=-1) {
             objNotepadmanager=new NotepadManager(getActivity().getBaseContext());
             NotepadModel noteInfo= objNotepadmanager.getSpecificNote(noteId);
@@ -97,6 +101,17 @@ public class EntryFragment extends Fragment implements View.OnClickListener {
             edtDescription.setText(noteInfo.getDescription());
         }
         btnSaveData.setOnClickListener(this);
+        btnCancelData.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                currentFragment = new ListFragment();
+                manager = getFragmentManager();
+                transaction = manager.beginTransaction();
+                transaction.replace(R.id.llFragmentHolder, currentFragment);
+                transaction.addToBackStack(null).commit();
+                transaction.commit();
+            }
+        });
         return RootView;
     }
 
@@ -130,6 +145,7 @@ public class EntryFragment extends Fragment implements View.OnClickListener {
                    manager = getFragmentManager();
                    transaction = manager.beginTransaction();
                    transaction.replace(R.id.llFragmentHolder, currentFragment);
+                   transaction.addToBackStack(null);
                    transaction.commit();
                } else
                    Toast.makeText(getActivity().getBaseContext(), "not inserted", Toast.LENGTH_SHORT).show();
@@ -143,6 +159,7 @@ public class EntryFragment extends Fragment implements View.OnClickListener {
                    manager = getFragmentManager();
                    transaction = manager.beginTransaction();
                    transaction.replace(R.id.llFragmentHolder, currentFragment);
+                   transaction.addToBackStack(null);
                    transaction.commit();
                } else
                    Toast.makeText(getActivity().getBaseContext(), "not updated", Toast.LENGTH_SHORT).show();

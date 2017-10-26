@@ -5,6 +5,7 @@ import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 
 import com.example.welcome.smartnotepad.DBManager.NotepadManager;
@@ -27,14 +28,54 @@ public class StartActivity extends AppCompatActivity {
         initialization();
     }
 
-       private void initialization() {
+    public void showUpButton() { getSupportActionBar().setDisplayHomeAsUpEnabled(true); }
+    public void hideUpButton() { getSupportActionBar().setDisplayHomeAsUpEnabled(false); }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            // Respond to the action bar's Up/Home button
+            case android.R.id.home:
+               // getSupportFragmentManager().popBackStack();
+                currentFragment = new ListFragment();
+                manager = getFragmentManager();
+                transaction = manager.beginTransaction();
+                transaction.replace(R.id.llFragmentHolder, currentFragment);
+                transaction.addToBackStack(null);
+                transaction.commit();
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+    private void initialization() {
         objNotepadManager=new NotepadManager(this);
         objListNoteData1=new ArrayList<String>();
         currentFragment = new ListFragment();
         manager = getFragmentManager();
         transaction = manager.beginTransaction();
         transaction.add(R.id.llFragmentHolder, currentFragment);
-        transaction.commit();
+        transaction.addToBackStack(null).commit();
+    }
+
+    @Override
+    public void onBackPressed() {
+        /*if (getSupportFragmentManager().getBackStackEntryCount() > 0) {
+            getSupportFragmentManager().popBackStack();
+        } else {
+            this.finish();
+        }*/
+        Fragment currentFragment = getFragmentManager().findFragmentById(R.id.llFragmentHolder);
+        if (currentFragment != null && currentFragment instanceof ListFragment) {
+            this.finish();
+        }
+        else {
+            currentFragment = new ListFragment();
+            manager = getFragmentManager();
+            transaction = manager.beginTransaction();
+            transaction.replace(R.id.llFragmentHolder, currentFragment);
+            transaction.addToBackStack(null).commit();
+        }
     }
 
     public void createNote(View view) {
@@ -47,5 +88,4 @@ public class StartActivity extends AppCompatActivity {
         transaction.addToBackStack(null);
         transaction.commit();
     }
-
 }
