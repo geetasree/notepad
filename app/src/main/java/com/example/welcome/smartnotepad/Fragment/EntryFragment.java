@@ -108,7 +108,7 @@ public class EntryFragment extends Fragment implements View.OnClickListener {
                 manager = getFragmentManager();
                 transaction = manager.beginTransaction();
                 transaction.replace(R.id.llFragmentHolder, currentFragment);
-                transaction.addToBackStack(null).commit();
+                transaction.addToBackStack(null);
                 transaction.commit();
             }
         });

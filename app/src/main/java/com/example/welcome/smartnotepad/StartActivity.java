@@ -60,11 +60,6 @@ public class StartActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        /*if (getSupportFragmentManager().getBackStackEntryCount() > 0) {
-            getSupportFragmentManager().popBackStack();
-        } else {
-            this.finish();
-        }*/
         Fragment currentFragment = getFragmentManager().findFragmentById(R.id.llFragmentHolder);
         if (currentFragment != null && currentFragment instanceof ListFragment) {
             this.finish();

@@ -9,4 +9,5 @@
     <string name="btnSave">Save</string>
     <string name="mnDlt">Delete</string>
     <string name="btnCancel">Cancel</string>
+    <string name="mnRefresh">Refresh</string>
 </resources>
