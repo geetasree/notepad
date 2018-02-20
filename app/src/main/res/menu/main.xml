@@ -4,5 +4,5 @@
     android:id="@+id/mnDlt"
     android:title="@string/mnDlt"
     > </item>
-    
+
 </menu>

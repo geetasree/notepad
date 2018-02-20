@@ -38,7 +38,8 @@ public class NotepadManager {
     public ArrayList<NotepadModel> getAllNoteTitle() {
         openDatabase();
         ArrayList<NotepadModel> NoteData = new ArrayList<NotepadModel>();
-        Cursor cursor = database.query(NotepadHelper.TABLE_NOTEPAD, null, null, null, null, null, null);
+       // Cursor cursor = database.query(NotepadHelper.TABLE_NOTEPAD, null, null, null, null, null, null);
+        Cursor cursor =  database.rawQuery("SELECT * FROM notepad order by id desc", null);
         if (cursor != null && cursor.getCount() > 0) {
             cursor.moveToFirst();
 
